@@ -7,7 +7,6 @@ export async function middleware(request: NextRequest) {
   const token = request.cookies.get('token')?.value;
 
   if (!token) {
-    console.log('No token found, redirecting to login');
     return NextResponse.redirect(new URL('/auth/login', request.url));
   }
 
@@ -16,12 +15,10 @@ export async function middleware(request: NextRequest) {
     const isAuthenticated = await isAuthenticatedServer(token);
 
     if (!isAuthenticated) {
-      console.log('Invalid token, redirecting to login');
       return NextResponse.redirect(new URL('/auth/login', request.url));
     }
 
     // Allow the request to continue if the user is authenticated
-    console.log('User is authenticated, allowing request');
     return NextResponse.next();
   } catch (error) {
     console.error('Error in middleware:', error);

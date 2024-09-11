@@ -48,7 +48,7 @@ export function DashboardAppShell({ children }: DashboardAppShellProps) {
         <DashboardNavbar />
       </AppShell.Navbar>
 
-      <AppShell.Main mb="xl">{children}</AppShell.Main>
+      <AppShell.Main pb="xl">{children}</AppShell.Main>
       <AppShell.Footer
         p="sm"
         style={{
